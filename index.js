@@ -21,7 +21,8 @@
     }, true);
   }
 
-  if (typeof Map == 'undefined') {
+  if (typeof Map == 'undefined' ||
+        typeof new Map().values().next === 'undefined') {
     exports.Map = createCollection({
       // WeakMap#delete(key:void*):boolean
       'delete': sharedDelete,
@@ -45,7 +46,8 @@
     });
   }
 
-  if (typeof Set == 'undefined') {
+  if (typeof Set == 'undefined' ||
+        typeof new Set().values().next === 'undefined') {
     exports.Set = createCollection({
       // Set#has(value:void*):boolean
       has: setHas,
